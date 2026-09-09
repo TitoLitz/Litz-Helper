@@ -28,3 +28,36 @@ O projeto foi planejado para ser **100% gratuito**, podendo alternar entre model
  [ Usuário / Discord ] ➡️ [ RAG Engine + Prompt Persona ] ➡️ [ LLM (Gemini API / Ollama) ]
                                     ⬇️
                            [ Resposta Final ]
+
+## Estrutura recomendada de pastas
+Litz-Helper/
+│
+├── data/                   # Arquivos raspados e base de dados local
+│   ├── raw/                # Conteúdo bruto retornado dos sites (.md ou .json)
+│   └── chroma_db/          # Banco de dados vetorial indexado
+│
+├── src/                    # Código-fonte principal
+│   ├── scraper.py          # Script de raspagem dos 3 sites
+│   ├── vector_store.py     # Script para gerar e salvar embeddings no ChromaDB
+│   ├── rag_engine.py       # Lógica do RAG (ChromaDB + Gemini/Ollama)
+│   └── bot.py              # Script da integração com o Discord (futuro)
+│
+├── .env.example            # Exemplo de variáveis de ambiente
+├── .gitignore              # Arquivos e pastas a serem ignorados pelo Git
+├── requirements.txt        # Dependências do projeto Python
+└── README.md               # Documentação do repositório
+
+.env Exemplo
+# Provedor Ativo: "gemini" ou "ollama"
+LLM_PROVIDER=gemini
+
+# Chaves de API
+GEMINI_API_KEY=sua_chave_do_google_ai_studio_aqui
+
+# Configurações do Ollama Local
+OLLAMA_HOST=http://localhost:11434
+OLLAMA_MODEL=llama3
+
+# Discord (Futuro)
+DISCORD_TOKEN=seu_token_do_bot_aqui
+
